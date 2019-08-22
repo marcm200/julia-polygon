@@ -1,3 +1,5 @@
+<img src="./_overview.gif">
+
 # julia-polygon
 Constructing polygons to describe the interior and exterior of Julia sets.
 
@@ -70,7 +72,7 @@ in its region and has space to the boundary of said area.
 
 For the oracle output, a complex number is tested against every single 
 polygon and it is judged by the point-in-polygon test (see literature) whether that 
-point lies in the outside of that specific single polygon or on the inside. 
+point lies in the outside of that specific single polygon or in the inside. 
 
 The result of the oracle function is then a combination of those individual results, derived as follows:
 
@@ -92,7 +94,7 @@ It is noteworthy, that always, but especially in case there is only a single ext
 of that polygon does not have a specific mathematical meaning.
 
 The interior polygons are found by tiling the image in usually 5x5 grid points, finding those with only black pixels
-and then marking the inner 3x3 region. That gives an image with kernel seeds. Then those kernels are
+and then marking the inner 3x3 region (see top of page's middle image). That gives an image with kernel seeds. Then those kernels are
 connected to identically colored ones horizontally and vertically only, and only if a connecting line has
 only neighbours either of black color or of marked color. That ensures there is room to the boundary of the
 region. If no further change can be made, the polygons are those marked pixels that do have a black neighbour left.
@@ -151,7 +153,7 @@ test-in-practice.
 ## 4. Command-line options
 
 The task the code performs is controlled by the command-line option `cmd=commandstring` followed 
-by several additional parameters. The image to be read must be named `_in.bmp` and 
+by several additional command-line arguments. The image to be read must be named `_in.bmp` and 
 be an 8 bit bitmap. It must have a white (exterior) border of at least 16 pixels 
 width on all sides.
 
@@ -168,7 +170,7 @@ This constructs the set of exterior describing polygons and saves them under the
 names `èxtpNNNN`. 
 
 `RANGE=min,max`<br>
-This denotes the range of each axis from min..max, both being whole numbers.
+This denotes the range in the complex plane for each axis from min..max, both being whole numbers.
 The range is both applied to the real and the imaginary axis and should be 
 symmetrical. If not provided, the standard range is -2..+2.
 
@@ -180,7 +182,7 @@ point-in-polygon test will be (much) faster but the polygons will retreat furthe
 from the actual boundary and look more and more square-cut.
 
 `MINPOLLEN=n`<br>
-This dewscribes the minimum number of vertices a polygon must have to be deemed
+This describes the minimum number of vertices a polygon must have to be deemed
 valid. Ìt is usually used for interior polygons (see below), but can play a role 
 if the image has various islands of very small gray areas. In that case one must use 
 a value of 1 to get all polygons, otherwise quality control will fail as then 
